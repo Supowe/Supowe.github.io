@@ -102,6 +102,7 @@ permalink: /categories/
 .category-count {
   font-size: 0.9rem;
   color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .categories-posts {
