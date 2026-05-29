@@ -5,7 +5,7 @@
   </div>
   <div class="tag-cloud">
     {% for tag in site.tags %}
-      <a href="/tags/{{ tag[0] | slugify }}" class="tag-item" style="--tag-index: {{ forloop.index }}">
+      <a href="/tags/#{{ tag[0] | slugify }}" class="tag-item" style="--tag-index: {{ forloop.index }}">
         <i class="fas fa-tag"></i>
         {{ tag[0] }}
         <span class="tag-count">{{ tag[1].size }}</span>
