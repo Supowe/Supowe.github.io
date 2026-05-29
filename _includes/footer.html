@@ -37,7 +37,7 @@
           <ul class="footer-nav">
             {% for category in site.categories limit:4 %}
               <li>
-                <a href="/categories/{{ category[0] }}">
+                <a href="/categories/#{{ category[0] | slugify }}">
                   <i class="fas fa-folder-open"></i> {{ category[0] }}
                   <span class="count">({{ category[1].size }})</span>
                 </a>
