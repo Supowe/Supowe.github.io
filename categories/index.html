@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章分类</title>
+  <meta name="description" content="分享学习日常与小笔记，记录点滴成长">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="entry-overlay">
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+    <div class="layer layer-4">
+      <div class="loader-content">
+        <div class="loader-icon"></div>
+        <div class="loader-text">正在打开宝藏...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <div class="rainbow-line"></div>
+
+  <div class="reading-progress"></div>
+
+  <div class="particles-container">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+
+  <button class="back-to-top" aria-label="回到顶部">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <h1 class="site-title">
+        <a href="/">
+          <span class="logo-icon"><i class="fas fa-feather-alt"></i></span>
+          🪴 ZhongShurong的技术小站
+        </a>
+      </h1>
+      <nav class="nav-links">
+        <a href="/">
+          <i class="fas fa-home"></i> <span>首页</span>
+        </a>
+        <a href="/about/">
+          <i class="fas fa-user"></i> <span>关于</span>
+        </a>
+        
+          <a href="https://github.com/Supowe" target="_blank">
+            <i class="fab fa-github"></i> <span>GitHub</span>
+          </a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+  <main class="site-main">
+    <div class="container">
+      <section class="page-section">
+  <div class="container">
+    <h1 class="page-title">
+      <i class="fas fa-folder-open"></i> 文章分类
+    </h1>
+    
+    <div class="categories-grid">
+      
+        <div class="category-card">
+          <a href="#工具" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>工具</h3>
+              <span class="category-count">2 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#jekyll" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>Jekyll</h3>
+              <span class="category-count">1 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#前端" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>前端</h3>
+              <span class="category-count">3 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#html" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>HTML</h3>
+              <span class="category-count">1 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#css" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>CSS</h3>
+              <span class="category-count">2 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#git" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>Git</h3>
+              <span class="category-count">1 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#vue" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>Vue</h3>
+              <span class="category-count">1 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#生活" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>生活</h3>
+              <span class="category-count">1 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+        <div class="category-card">
+          <a href="#随笔" class="category-link">
+            <div class="category-icon">
+              <i class="fas fa-folder"></i>
+            </div>
+            <div class="category-info">
+              <h3>随笔</h3>
+              <span class="category-count">1 篇文章</span>
+            </div>
+          </a>
+        </div>
+      
+    </div>
+
+    <div class="categories-posts">
+      
+        <div id="工具" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> 工具
+            <span class="category-post-count">(2)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/26/git-workflow/" class="post-link">
+                  <span class="post-date">2026-05-26</span>
+                  <span class="post-title">Git 工作流最佳实践</span>
+                </a>
+              </li>
+            
+              <li class="post-item">
+                <a href="/2026/05/23/first-jekyll-blog/" class="post-link">
+                  <span class="post-date">2026-05-23</span>
+                  <span class="post-title">第一次用 Jekyll 搭建博客：真香预警！</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="jekyll" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> Jekyll
+            <span class="category-post-count">(1)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/23/first-jekyll-blog/" class="post-link">
+                  <span class="post-date">2026-05-23</span>
+                  <span class="post-title">第一次用 Jekyll 搭建博客：真香预警！</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="前端" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> 前端
+            <span class="category-post-count">(3)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/28/vue3-intro/" class="post-link">
+                  <span class="post-date">2026-05-28</span>
+                  <span class="post-title">Vue 3 入门教程：组合式 API 详解</span>
+                </a>
+              </li>
+            
+              <li class="post-item">
+                <a href="/2026/05/27/css-grid/" class="post-link">
+                  <span class="post-date">2026-05-27</span>
+                  <span class="post-title">CSS Grid 布局完全指南</span>
+                </a>
+              </li>
+            
+              <li class="post-item">
+                <a href="/2026/05/24/html-css-learning/" class="post-link">
+                  <span class="post-date">2026-05-24</span>
+                  <span class="post-title">HTML/CSS 基础学习心得：我的前端入门之路</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="html" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> HTML
+            <span class="category-post-count">(1)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/24/html-css-learning/" class="post-link">
+                  <span class="post-date">2026-05-24</span>
+                  <span class="post-title">HTML/CSS 基础学习心得：我的前端入门之路</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="css" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> CSS
+            <span class="category-post-count">(2)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/27/css-grid/" class="post-link">
+                  <span class="post-date">2026-05-27</span>
+                  <span class="post-title">CSS Grid 布局完全指南</span>
+                </a>
+              </li>
+            
+              <li class="post-item">
+                <a href="/2026/05/24/html-css-learning/" class="post-link">
+                  <span class="post-date">2026-05-24</span>
+                  <span class="post-title">HTML/CSS 基础学习心得：我的前端入门之路</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="git" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> Git
+            <span class="category-post-count">(1)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/26/git-workflow/" class="post-link">
+                  <span class="post-date">2026-05-26</span>
+                  <span class="post-title">Git 工作流最佳实践</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="vue" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> Vue
+            <span class="category-post-count">(1)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/28/vue3-intro/" class="post-link">
+                  <span class="post-date">2026-05-28</span>
+                  <span class="post-title">Vue 3 入门教程：组合式 API 详解</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="生活" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> 生活
+            <span class="category-post-count">(1)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/29/welcome-to-jekyll/" class="post-link">
+                  <span class="post-date">2026-05-29</span>
+                  <span class="post-title">欢迎来到我的博客！</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+        <div id="随笔" class="category-section">
+          <h2 class="category-title">
+            <i class="fas fa-folder"></i> 随笔
+            <span class="category-post-count">(1)</span>
+          </h2>
+          <ul class="post-list">
+            
+              <li class="post-item">
+                <a href="/2026/05/29/welcome-to-jekyll/" class="post-link">
+                  <span class="post-date">2026-05-29</span>
+                  <span class="post-title">欢迎来到我的博客！</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+.page-section {
+  padding: 2rem 0 4rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.category-card {
+  background: linear-gradient(135deg, rgba(255, 143, 171, 0.1), rgba(125, 211, 192, 0.1));
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(255, 143, 171, 0.2);
+}
+
+.category-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.category-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.category-count {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.categories-posts {
+  margin-top: 2rem;
+}
+
+.category-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.category-post-count {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: var(--text-secondary);
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-item:hover {
+  padding-left: 0.5rem;
+}
+
+.post-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-right: 1rem;
+}
+
+.post-title {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.post-item:hover .post-title {
+  color: var(--primary-color);
+}
+</style>
+
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-glow"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon"><i class="fas fa-feather-alt"></i></span>
+          <span class="logo-text">🪴 ZhongShurong的技术小站</span>
+        </div>
+        <p class="footer-desc">分享学习日常与小笔记，记录点滴成长</p>
+        <div class="footer-social-links">
+          
+            <a href="https://github.com/Supowe" target="_blank" class="social-link" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-compass"></i> 探索本站
+          </h4>
+          <ul class="footer-nav">
+            <li><a href="/"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="/about/"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="/categories/"><i class="fas fa-folder"></i> 文章分类</a></li>
+            <li><a href="/tags/"><i class="fas fa-tags"></i> 标签云</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-layer-group"></i> 内容分类
+          </h4>
+          <ul class="footer-nav">
+            
+              <li>
+                <a href="/categories/#工具">
+                  <i class="fas fa-folder-open"></i> 工具
+                  <span class="count">(2)</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/#jekyll">
+                  <i class="fas fa-folder-open"></i> Jekyll
+                  <span class="count">(1)</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/#前端">
+                  <i class="fas fa-folder-open"></i> 前端
+                  <span class="count">(3)</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/#html">
+                  <i class="fas fa-folder-open"></i> HTML
+                  <span class="count">(1)</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-clock"></i> 最近更新
+          </h4>
+          <ul class="footer-nav footer-recent">
+            
+              <li>
+                <a href="/2026/05/29/welcome-to-jekyll/">
+                  <span class="recent-title">欢迎来到我的博客！</span>
+                  <span class="recent-date">05/29</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/2026/05/28/vue3-intro/">
+                  <span class="recent-title">Vue 3 入门教程：组合式 ...</span>
+                  <span class="recent-date">05/28</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/2026/05/27/css-grid/">
+                  <span class="recent-title">CSS Grid 布局完全指南</span>
+                  <span class="recent-date">05/27</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-stats">
+      <div class="stat-box">
+        <i class="fas fa-file-alt"></i>
+        <span class="stat-num">6</span>
+        <span class="stat-label">篇文章</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-folder"></i>
+        <span class="stat-num">9</span>
+        <span class="stat-label">个分类</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-tag"></i>
+        <span class="stat-num">15</span>
+        <span class="stat-label">个标签</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-badge">
+        <span><i class="fas fa-code"></i> Built with Jekyll</span>
+        <span><i class="fas fa-heart heart"></i> 用心打造</span>
+      </div>
+      <p class="copyright">
+        © 2026 <a href="/">🪴 ZhongShurong的技术小站</a>. All rights reserved.
+      </p>
+      <p class="footer-quote">「 记录成长，分享美好 」</p>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

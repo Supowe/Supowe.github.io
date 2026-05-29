@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-05-29T14:58:53+00:00</updated><id>/feed.xml</id><title type="html">🪴 ZhongShurong的技术小站</title><subtitle>分享学习日常与小笔记，记录点滴成长</subtitle><entry><title type="html">欢迎来到我的博客！</title><link href="/2026/05/29/welcome-to-jekyll/" rel="alternate" type="text/html" title="欢迎来到我的博客！" /><published>2026-05-29T09:20:34+00:00</published><updated>2026-05-29T09:20:34+00:00</updated><id>/2026/05/29/welcome-to-jekyll</id><content type="html" xml:base="/2026/05/29/welcome-to-jekyll/"><![CDATA[<p>🎉 <strong>欢迎来到我的个人博客！</strong></p>
+
+<p>这是我的第一篇博客文章，我将在这里记录我的学习历程、技术心得和生活感悟。</p>
+
+<h3 id="为什么开始写博客">为什么开始写博客？</h3>
+
+<ol>
+  <li><strong>记录成长</strong>：通过写作来整理自己的知识和思路</li>
+  <li><strong>分享经验</strong>：希望能帮助到正在学习的小伙伴</li>
+  <li><strong>结交朋友</strong>：认识更多志同道合的朋友</li>
+</ol>
+
+<h3 id="博客内容">博客内容</h3>
+
+<p>我计划分享以下内容：</p>
+
+<ul>
+  <li><strong>技术文章</strong>：前端开发、后端开发、数据库等技术分享</li>
+  <li><strong>学习笔记</strong>：读书心得、课程总结</li>
+  <li><strong>生活随笔</strong>：日常思考、旅行见闻</li>
+</ul>
+
+<h3 id="技术栈">技术栈</h3>
+
+<p>这个博客是使用 <strong>Jekyll</strong> 搭建的，这是一个非常棒的静态网站生成器。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_blog</span>
+  <span class="nb">puts</span> <span class="s2">"欢迎来到我的博客！"</span>
+  <span class="nb">puts</span> <span class="s2">"让我们一起成长！"</span>
+<span class="k">end</span>
+
+<span class="n">hello_blog</span>
+<span class="c1">#=&gt; 欢迎来到我的博客！</span>
+<span class="c1">#=&gt; 让我们一起成长！</span>
+</code></pre></div></div>
+
+<p>如果你对 Jekyll 感兴趣，可以访问 <a href="https://jekyllrb.com/docs/home">Jekyll 官方文档</a> 了解更多。</p>
+
+<p>感谢你的阅读，期待与你一起交流！🚀</p>]]></content><author><name></name></author><category term="生活" /><category term="随笔" /><summary type="html"><![CDATA[🎉 欢迎来到我的个人博客！]]></summary></entry><entry><title type="html">Vue 3 入门教程：组合式 API 详解</title><link href="/2026/05/28/vue3-intro/" rel="alternate" type="text/html" title="Vue 3 入门教程：组合式 API 详解" /><published>2026-05-28T10:30:00+00:00</published><updated>2026-05-28T10:30:00+00:00</updated><id>/2026/05/28/vue3-intro</id><content type="html" xml:base="/2026/05/28/vue3-intro/"><![CDATA[<h2 id="什么是组合式-api">什么是组合式 API</h2>
+
+<p>Vue 3 引入了组合式 API（Composition API），这是一种全新的代码组织方式，相比传统的选项式 API，它提供了更好的代码复用和逻辑组织能力。</p>
+
+<h3 id="为什么需要组合式-api">为什么需要组合式 API</h3>
+
+<p>在 Vue 2 中，我们使用选项式 API 来组织代码：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">count</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这种方式在处理复杂组件时会遇到问题，相关的逻辑分散在不同的选项中，难以维护。</p>
+
+<h3 id="组合式-api-的基本用法">组合式 API 的基本用法</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">onMounted</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nf">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="kd">const</span> <span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="p">.</span><span class="nx">value</span><span class="o">++</span>
+    <span class="p">}</span>
+    
+    <span class="nf">onMounted</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Component mounted</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">})</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">count</span><span class="p">,</span>
+      <span class="nx">increment</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="ref-和-reactive">ref 和 reactive</h3>
+
+<p><code class="language-plaintext highlighter-rouge">ref</code> 用于创建响应式的基本类型数据，而 <code class="language-plaintext highlighter-rouge">reactive</code> 用于创建响应式对象：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">reactive</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nf">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="nf">reactive</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Vue 3</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">version</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="计算属性">计算属性</h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">computed</code> 创建计算属性：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">computed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nf">ref</span><span class="p">(</span><span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="nf">ref</span><span class="p">(</span><span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">fullName</span> <span class="o">=</span> <span class="nf">computed</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">firstName</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">lastName</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="生命周期钩子">生命周期钩子</h3>
+
+<p>组合式 API 提供了对应的生命周期钩子：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">onMounted</code> - 组件挂载后</li>
+  <li><code class="language-plaintext highlighter-rouge">onUpdated</code> - 组件更新后</li>
+  <li><code class="language-plaintext highlighter-rouge">onUnmounted</code> - 组件卸载前</li>
+</ul>
+
+<h3 id="总结">总结</h3>
+
+<p>组合式 API 为 Vue 3 带来了更灵活的代码组织方式，特别适合处理复杂的业务逻辑。通过将相关逻辑组合在一起，可以提高代码的可读性和可维护性。</p>
+
+<blockquote>
+  <p>学习 Vue 3 的组合式 API 是前端开发者的必备技能之一。</p>
+</blockquote>]]></content><author><name></name></author><category term="前端" /><category term="Vue" /><category term="Vue3" /><category term="Composition" /><category term="API" /><category term="JavaScript" /><summary type="html"><![CDATA[什么是组合式 API]]></summary></entry><entry><title type="html">CSS Grid 布局完全指南</title><link href="/2026/05/27/css-grid/" rel="alternate" type="text/html" title="CSS Grid 布局完全指南" /><published>2026-05-27T09:00:00+00:00</published><updated>2026-05-27T09:00:00+00:00</updated><id>/2026/05/27/css-grid</id><content type="html" xml:base="/2026/05/27/css-grid/"><![CDATA[<h2 id="css-grid-简介">CSS Grid 简介</h2>
+
+<p>CSS Grid 是一种强大的二维布局系统，可以同时处理行和列。它提供了一种更简洁、更强大的方式来创建复杂的布局。</p>
+
+<h3 id="基本概念">基本概念</h3>
+
+<p><strong>网格容器（Grid Container）</strong>：应用 <code class="language-plaintext highlighter-rouge">display: grid</code> 的元素
+<strong>网格项（Grid Item）</strong>：容器的直接子元素
+<strong>网格线（Grid Line）</strong>：划分网格的线
+<strong>网格轨道（Grid Track）</strong>：两条相邻网格线之间的空间</p>
+
+<h3 id="创建网格">创建网格</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-columns</span><span class="p">:</span> <span class="m">200px</span> <span class="m">200px</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">grid-template-rows</span><span class="p">:</span> <span class="m">100px</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="网格模板">网格模板</h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">fr</code> 单位创建弹性网格：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-columns</span><span class="p">:</span> <span class="m">1fr</span> <span class="m">1fr</span> <span class="m">1fr</span><span class="p">;</span>
+  <span class="nl">grid-template-rows</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="网格区域">网格区域</h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">grid-template-areas</code> 创建命名区域：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-areas</span><span class="p">:</span>
+    <span class="s1">"header header header"</span>
+    <span class="s1">"sidebar main main"</span>
+    <span class="s1">"footer footer footer"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.header</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">header</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.sidebar</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">sidebar</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.main</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">main</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.footer</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">footer</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="项目放置">项目放置</h3>
+
+<p>精确控制网格项的位置：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">grid-column</span><span class="p">:</span> <span class="m">1</span> <span class="o">/</span> <span class="m">3</span><span class="p">;</span>
+  <span class="nl">grid-row</span><span class="p">:</span> <span class="m">2</span> <span class="o">/</span> <span class="m">4</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="对齐方式">对齐方式</h3>
+
+<p><strong>justify-items</strong>：水平对齐
+<strong>align-items</strong>：垂直对齐
+<strong>place-items</strong>：同时设置两者</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">justify-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="响应式网格">响应式网格</h3>
+
+<p>结合媒体查询创建响应式布局：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-columns</span><span class="p">:</span> <span class="nf">repeat</span><span class="p">(</span><span class="nb">auto-fit</span><span class="p">,</span> <span class="nf">minmax</span><span class="p">(</span><span class="m">250px</span><span class="p">,</span> <span class="m">1fr</span><span class="p">));</span>
+  <span class="nl">gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="总结">总结</h3>
+
+<p>CSS Grid 是现代前端开发中不可或缺的布局工具，掌握它可以让你更高效地创建复杂的页面布局。</p>]]></content><author><name></name></author><category term="前端" /><category term="CSS" /><category term="CSS" /><category term="Grid" /><category term="布局" /><summary type="html"><![CDATA[CSS Grid 简介]]></summary></entry><entry><title type="html">Git 工作流最佳实践</title><link href="/2026/05/26/git-workflow/" rel="alternate" type="text/html" title="Git 工作流最佳实践" /><published>2026-05-26T14:00:00+00:00</published><updated>2026-05-26T14:00:00+00:00</updated><id>/2026/05/26/git-workflow</id><content type="html" xml:base="/2026/05/26/git-workflow/"><![CDATA[<h2 id="git-工作流概述">Git 工作流概述</h2>
+
+<p>良好的 Git 工作流是团队协作的基础。本文介绍几种常见的 Git 工作流模式及其适用场景。</p>
+
+<h3 id="1-git-flow">1. Git Flow</h3>
+
+<p>Git Flow 是一种经典的工作流模式，适合大型项目和严格的发布周期。</p>
+
+<p><strong>核心分支：</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main</code> - 生产环境代码</li>
+  <li><code class="language-plaintext highlighter-rouge">develop</code> - 开发分支</li>
+  <li><code class="language-plaintext highlighter-rouge">feature/*</code> - 功能分支</li>
+  <li><code class="language-plaintext highlighter-rouge">release/*</code> - 发布分支</li>
+  <li><code class="language-plaintext highlighter-rouge">hotfix/*</code> - 紧急修复分支</li>
+</ul>
+
+<p><strong>工作流程：</strong></p>
+<ol>
+  <li>从 <code class="language-plaintext highlighter-rouge">develop</code> 分支创建 <code class="language-plaintext highlighter-rouge">feature</code> 分支</li>
+  <li>完成功能后合并回 <code class="language-plaintext highlighter-rouge">develop</code></li>
+  <li>创建 <code class="language-plaintext highlighter-rouge">release</code> 分支进行测试</li>
+  <li>合并到 <code class="language-plaintext highlighter-rouge">main</code> 并打标签</li>
+  <li>如有问题使用 <code class="language-plaintext highlighter-rouge">hotfix</code> 分支修复</li>
+</ol>
+
+<h3 id="2-github-flow">2. GitHub Flow</h3>
+
+<p>GitHub Flow 是一种更简单的工作流，适合持续部署的项目。</p>
+
+<p><strong>工作流程：</strong></p>
+<ol>
+  <li>从 <code class="language-plaintext highlighter-rouge">main</code> 创建功能分支</li>
+  <li>提交代码并推送到远程</li>
+  <li>创建 Pull Request</li>
+  <li>代码审查和测试</li>
+  <li>合并到 <code class="language-plaintext highlighter-rouge">main</code> 并部署</li>
+</ol>
+
+<h3 id="3-trunk-based-development">3. Trunk-Based Development</h3>
+
+<p>Trunk-Based Development 适合需要频繁部署的团队。</p>
+
+<p><strong>特点：</strong></p>
+<ul>
+  <li>所有开发者共享一个 <code class="language-plaintext highlighter-rouge">main</code> 分支</li>
+  <li>使用短生命周期的特性分支</li>
+  <li>频繁合并到主干</li>
+  <li>依赖自动化测试</li>
+</ul>
+
+<h3 id="提交信息规范">提交信息规范</h3>
+
+<p>使用约定式提交（Conventional Commits）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>feat: 添加用户登录功能
+fix: 修复登录页面样式问题
+docs: 更新 API 文档
+refactor: 重构用户模块代码
+test: 添加单元测试
+chore: 更新依赖版本
+</code></pre></div></div>
+
+<h3 id="git-常用命令">Git 常用命令</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 创建并切换分支</span>
+git checkout <span class="nt">-b</span> feature/login
+
+<span class="c"># 查看状态</span>
+git status
+
+<span class="c"># 暂存文件</span>
+git add <span class="nb">.</span>
+
+<span class="c"># 提交</span>
+git commit <span class="nt">-m</span> <span class="s2">"feat: 添加登录表单"</span>
+
+<span class="c"># 推送分支</span>
+git push origin feature/login
+
+<span class="c"># 合并分支</span>
+git checkout main
+git merge feature/login
+</code></pre></div></div>
+
+<h3 id="总结">总结</h3>
+
+<p>选择合适的工作流取决于团队规模、项目复杂度和发布频率。无论选择哪种工作流，保持一致性和良好的提交规范是关键。</p>]]></content><author><name></name></author><category term="工具" /><category term="Git" /><category term="Git" /><category term="版本控制" /><category term="工作流" /><summary type="html"><![CDATA[Git 工作流概述]]></summary></entry><entry><title type="html">HTML/CSS 基础学习心得：我的前端入门之路</title><link href="/2026/05/24/html-css-learning/" rel="alternate" type="text/html" title="HTML/CSS 基础学习心得：我的前端入门之路" /><published>2026-05-24T15:30:00+00:00</published><updated>2026-05-24T15:30:00+00:00</updated><id>/2026/05/24/html-css-learning</id><content type="html" xml:base="/2026/05/24/html-css-learning/"><![CDATA[<h2 id="写在前面">写在前面</h2>
+
+<p>说起前端开发，很多人会觉得很难，但其实 HTML 和 CSS 是最容易入门的编程技能之一。作为一名正在学习前端的学生，我想分享一些自己的学习心得。</p>
+
+<h3 id="什么是-html-和-css">什么是 HTML 和 CSS？</h3>
+
+<p>简单来说：</p>
+<ul>
+  <li><strong>HTML</strong> 是网页的骨架，负责内容和结构</li>
+  <li><strong>CSS</strong> 是网页的外衣，负责样式和美观</li>
+</ul>
+
+<p>就像盖房子一样，HTML 是钢筋水泥，CSS 是装修涂料。</p>
+
+<h3 id="html-基础标签学习">HTML 基础标签学习</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"zh-CN"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>我的第一个网页<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>欢迎来到我的博客<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>这是一段文字描述<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"photo.jpg"</span> <span class="na">alt=</span><span class="s">"图片描述"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://example.com"</span><span class="nt">&gt;</span>这是一个链接<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><strong>常用标签：</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> 到 <code class="language-plaintext highlighter-rouge">&lt;h6&gt;</code> - 标题，数字越大字体越小</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;p&gt;</code> - 段落</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> - 链接</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> - 图片</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code> / <code class="language-plaintext highlighter-rouge">&lt;ol&gt;</code> - 无序列表 / 有序列表</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> - 区块容器（最重要的标签之一）</li>
+</ul>
+
+<h3 id="css-入门">CSS 入门</h3>
+
+<p>CSS 让网页变得漂亮：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 选择器 { 属性: 值; } */</span>
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nx">#f5f5f5</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s1">"微软雅黑"</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">#333</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.container</span> <span class="p">{</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="盒子模型">盒子模型</h3>
+
+<p>这是 CSS 最核心的概念之一！</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>      <span class="c">/* 内边距 */</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">#ddd</span><span class="p">;</span>  <span class="c">/* 边框 */</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>      <span class="c">/* 外边距 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>每个元素都可以看作一个”盒子”，由内容、内边距、边框、外边距组成。</p>
+
+<h3 id="flexbox-布局">Flexbox 布局</h3>
+
+<p>Flexbox 是现代 CSS 布局神器：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">flex</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>用好 Flexbox，很多复杂的布局都能轻松实现！</p>
+
+<h3 id="我的学习经验">我的学习经验</h3>
+
+<ol>
+  <li><strong>多动手敲代码</strong> - 看十遍不如敲一遍</li>
+  <li><strong>模仿优秀网站</strong> - 看到好看的网页就 F12 看看人家怎么写的</li>
+  <li><strong>学会查文档</strong> - <a href="https://developer.mozilla.org">MDN</a> 是最好的参考资料</li>
+  <li><strong>保持耐心</strong> - 从简单页面开始，逐步增加复杂度</li>
+</ol>
+
+<h3 id="资源推荐">资源推荐</h3>
+
+<ul>
+  <li>freeCodeCamp（免费学习平台）</li>
+  <li>阮一峰的网络日志（中文技术博客标杆）</li>
+  <li>CSS-Tricks（CSS 技巧大全）</li>
+</ul>
+
+<hr />
+
+<p>学习 HTML/CSS 是一个循序渐进的过程，不要想着一口吃成胖子。从基础开始，多做练习，你会发现前端其实很有趣！</p>]]></content><author><name></name></author><category term="前端" /><category term="HTML" /><category term="CSS" /><category term="HTML" /><category term="CSS" /><category term="前端入门" /><summary type="html"><![CDATA[写在前面]]></summary></entry><entry><title type="html">第一次用 Jekyll 搭建博客：真香预警！</title><link href="/2026/05/23/first-jekyll-blog/" rel="alternate" type="text/html" title="第一次用 Jekyll 搭建博客：真香预警！" /><published>2026-05-23T09:00:00+00:00</published><updated>2026-05-23T09:00:00+00:00</updated><id>/2026/05/23/first-jekyll-blog</id><content type="html" xml:base="/2026/05/23/first-jekyll-blog/"><![CDATA[<h2 id="为什么要搭建独立博客">为什么要搭建独立博客？</h2>
+
+<p>话说最近老师布置了一个作业，让我们搭建个人博客。一开始我是拒绝的 —— 都2026年了，谁还看独立博客啊，发发朋友圈不香吗？</p>
+
+<p>但真正动手做下来，发现 Jekyll 博客真的很有意思！今天就来聊聊我的第一次体验~</p>
+
+<h3 id="jekyll-是什么">Jekyll 是什么？</h3>
+
+<p>简单来说，Jekyll 是一个<strong>静态网站生成器</strong>。你可以用 Markdown 写文章，它会自动帮你转换成漂亮的网页。</p>
+
+<blockquote>
+  <p>它不需要数据库，不需要复杂的配置，特别适合个人博客和技术文档网站。</p>
+</blockquote>
+
+<h3 id="搭建过程">搭建过程</h3>
+
+<p><strong>第一步：安装环境</strong></p>
+
+<p>我用的是 Windows 系统，安装过程稍微有点曲折（老师说要装 Ruby，我差点以为自己在挖矿 😂）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装 Bundler</span>
+gem <span class="nb">install </span>bundler
+
+<span class="c"># 创建新站点</span>
+jekyll new my-blog
+
+<span class="c"># 进入目录</span>
+<span class="nb">cd </span>my-blog
+
+<span class="c"># 启动服务器</span>
+bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p><strong>第二步：目录结构</strong></p>
+
+<p>Jekyll 的项目结构很清晰：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-blog/
+├── _posts/          # 博客文章放这里
+├── _layouts/        # 页面布局模板
+├── _includes/       # 可复用的组件
+├── _config.yml      # 配置文件
+├── assets/          # CSS、JS、图片
+└── index.md        # 首页
+</code></pre></div></div>
+
+<p><strong>第三步：写文章</strong></p>
+
+<p>这才是重点！写文章超级简单：</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">我的第一篇文章"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2026-05-23</span>
+<span class="na">categories</span><span class="pi">:</span> <span class="s">生活</span>
+<span class="nn">---</span>
+
+这里是正文内容，用 Markdown 格式书写。
+
+<span class="gu">## 小标题</span>
+<span class="p">
+-</span> 列表项1
+<span class="p">-</span> 列表项2
+
+就这么简单！
+</code></pre></div></div>
+
+<h3 id="主题选择">主题选择</h3>
+
+<p>Jekyll 有很多免费主题，我选了一个简洁的 Minima 主题。后来发现可以自己定制 CSS，就动手改了一版，现在看起来还挺像样的！</p>
+
+<h3 id="github-pages-免费托管">GitHub Pages 免费托管</h3>
+
+<p>最香的是可以免费托管到 GitHub Pages！只要把代码推送到 GitHub，就能在网上访问你的博客了，而且完全免费！</p>
+
+<h3 id="优点-vs-缺点">优点 vs 缺点</h3>
+
+<p><strong>优点：</strong></p>
+<ul>
+  <li>✅ 简单易用，写作体验好</li>
+  <li>✅ 加载速度快，纯静态页面</li>
+  <li>✅ 免费托管，省钱</li>
+  <li>✅ 可以深度定制</li>
+  <li>✅ Git 版本管理，再也不怕文章丢失</li>
+</ul>
+
+<p><strong>缺点：</strong></p>
+<ul>
+  <li>❌ 评论功能需要第三方支持（ Disqus 等）</li>
+  <li>❌ 动态功能受限（比如搜索、点赞等）</li>
+  <li>❌ Windows 下安装有点麻烦</li>
+</ul>
+
+<h3 id="心得体会">心得体会</h3>
+
+<p>虽然搭建过程遇到了一些坑（比如 Ruby 版本问题、bundle install 超时等），但最终看到自己的博客上线，真的超有成就感！</p>
+
+<p>现在我可以在任何文本编辑器里写文章，然后 <code class="language-plaintext highlighter-rouge">git push</code> 就发布了，这种感觉真的很棒！而且因为是纯静态页面，加载速度也很快。</p>
+
+<hr />
+
+<p>如果你也想尝试搭建个人博客，强烈推荐 Jekyll！虽然入门有点门槛，但学会了之后就再也回不去了~ 🚀</p>
+
+<p><strong>下期预告：</strong> 我打算给博客加个评论区，有好建议的可以留言哦！</p>]]></content><author><name></name></author><category term="工具" /><category term="Jekyll" /><category term="Jekyll" /><category term="博客" /><category term="静态网站" /><summary type="html"><![CDATA[为什么要搭建独立博客？]]></summary></entry></feed>

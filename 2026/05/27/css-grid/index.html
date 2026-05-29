@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid 布局完全指南</title>
+  <meta name="description" content="CSS Grid 简介
+">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="entry-overlay">
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+    <div class="layer layer-4">
+      <div class="loader-content">
+        <div class="loader-icon"></div>
+        <div class="loader-text">正在打开宝藏...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <div class="rainbow-line"></div>
+
+  <div class="reading-progress"></div>
+
+  <div class="particles-container">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+
+  <button class="back-to-top" aria-label="回到顶部">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <h1 class="site-title">
+        <a href="/">
+          <span class="logo-icon"><i class="fas fa-feather-alt"></i></span>
+          🪴 ZhongShurong的技术小站
+        </a>
+      </h1>
+      <nav class="nav-links">
+        <a href="/">
+          <i class="fas fa-home"></i> <span>首页</span>
+        </a>
+        <a href="/about/">
+          <i class="fas fa-user"></i> <span>关于</span>
+        </a>
+        
+          <a href="https://github.com/Supowe" target="_blank">
+            <i class="fab fa-github"></i> <span>GitHub</span>
+          </a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+  <main class="site-main">
+    <div class="container">
+      <div class="content-wrapper">
+  <div class="content-area">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="page-title">CSS Grid 布局完全指南</h1>
+        <div class="post-meta">
+          <span class="post-date">
+            <i class="fas fa-calendar"></i>
+            2026年05月27日
+          </span>
+          <span class="post-read-time">
+            <i class="fas fa-clock"></i>
+            1分钟阅读
+          </span>
+        </div>
+        <div class="post-categories">
+          
+            <span class="category-tag">前端</span>
+          
+            <span class="category-tag">CSS</span>
+          
+        </div>
+      </header>
+      
+      <div class="page-content">
+        <h2 id="css-grid-简介">CSS Grid 简介</h2>
+
+<p>CSS Grid 是一种强大的二维布局系统，可以同时处理行和列。它提供了一种更简洁、更强大的方式来创建复杂的布局。</p>
+
+<h3 id="基本概念">基本概念</h3>
+
+<p><strong>网格容器（Grid Container）</strong>：应用 <code class="language-plaintext highlighter-rouge">display: grid</code> 的元素
+<strong>网格项（Grid Item）</strong>：容器的直接子元素
+<strong>网格线（Grid Line）</strong>：划分网格的线
+<strong>网格轨道（Grid Track）</strong>：两条相邻网格线之间的空间</p>
+
+<h3 id="创建网格">创建网格</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-columns</span><span class="p">:</span> <span class="m">200px</span> <span class="m">200px</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="nl">grid-template-rows</span><span class="p">:</span> <span class="m">100px</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="网格模板">网格模板</h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">fr</code> 单位创建弹性网格：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-columns</span><span class="p">:</span> <span class="m">1fr</span> <span class="m">1fr</span> <span class="m">1fr</span><span class="p">;</span>
+  <span class="nl">grid-template-rows</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="网格区域">网格区域</h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">grid-template-areas</code> 创建命名区域：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-areas</span><span class="p">:</span>
+    <span class="s1">"header header header"</span>
+    <span class="s1">"sidebar main main"</span>
+    <span class="s1">"footer footer footer"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.header</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">header</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.sidebar</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">sidebar</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.main</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">main</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.footer</span> <span class="p">{</span> <span class="nl">grid-area</span><span class="p">:</span> <span class="n">footer</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="项目放置">项目放置</h3>
+
+<p>精确控制网格项的位置：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">grid-column</span><span class="p">:</span> <span class="m">1</span> <span class="o">/</span> <span class="m">3</span><span class="p">;</span>
+  <span class="nl">grid-row</span><span class="p">:</span> <span class="m">2</span> <span class="o">/</span> <span class="m">4</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="对齐方式">对齐方式</h3>
+
+<p><strong>justify-items</strong>：水平对齐
+<strong>align-items</strong>：垂直对齐
+<strong>place-items</strong>：同时设置两者</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">justify-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="响应式网格">响应式网格</h3>
+
+<p>结合媒体查询创建响应式布局：</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">grid</span><span class="p">;</span>
+  <span class="nl">grid-template-columns</span><span class="p">:</span> <span class="nf">repeat</span><span class="p">(</span><span class="nb">auto-fit</span><span class="p">,</span> <span class="nf">minmax</span><span class="p">(</span><span class="m">250px</span><span class="p">,</span> <span class="m">1fr</span><span class="p">));</span>
+  <span class="nl">gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="总结">总结</h3>
+
+<p>CSS Grid 是现代前端开发中不可或缺的布局工具，掌握它可以让你更高效地创建复杂的页面布局。</p>
+
+      </div>
+
+      <div class="post-navigation">
+        
+          <a href="/2026/05/26/git-workflow/" class="btn btn-outline" style="margin-right: 1rem;">
+            <i class="fas fa-arrow-left"></i> 上一篇
+          </a>
+        
+        
+          <a href="/2026/05/28/vue3-intro/" class="btn">
+            下一篇 <i class="fas fa-arrow-right"></i>
+          </a>
+        
+      </div>
+    </article>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-card category-card">
+  <div class="card-header">
+    <i class="fas fa-folder-open"></i>
+    <h3 class="card-title">文章分类</h3>
+  </div>
+  <ul class="category-list">
+    
+      <li class="category-item">
+        <a href="/categories/#工具" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">工具</span>
+          <span class="category-count">2</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#jekyll" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">Jekyll</span>
+          <span class="category-count">1</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#前端" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">前端</span>
+          <span class="category-count">3</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#html" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">HTML</span>
+          <span class="category-count">1</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#css" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">CSS</span>
+          <span class="category-count">2</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#git" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">Git</span>
+          <span class="category-count">1</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#vue" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">Vue</span>
+          <span class="category-count">1</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#生活" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">生活</span>
+          <span class="category-count">1</span>
+        </a>
+      </li>
+    
+      <li class="category-item">
+        <a href="/categories/#随笔" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">随笔</span>
+          <span class="category-count">1</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+    <div class="sidebar-card tag-card">
+  <div class="card-header">
+    <i class="fas fa-tags"></i>
+    <h3 class="card-title">标签云</h3>
+  </div>
+  <div class="tag-cloud">
+    
+      <a href="/tags/#jekyll" class="tag-item" style="--tag-index: 1">
+        <i class="fas fa-tag"></i>
+        Jekyll
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#博客" class="tag-item" style="--tag-index: 2">
+        <i class="fas fa-tag"></i>
+        博客
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#静态网站" class="tag-item" style="--tag-index: 3">
+        <i class="fas fa-tag"></i>
+        静态网站
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#html" class="tag-item" style="--tag-index: 4">
+        <i class="fas fa-tag"></i>
+        HTML
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#css" class="tag-item" style="--tag-index: 5">
+        <i class="fas fa-tag"></i>
+        CSS
+        <span class="tag-count">2</span>
+      </a>
+    
+      <a href="/tags/#前端入门" class="tag-item" style="--tag-index: 6">
+        <i class="fas fa-tag"></i>
+        前端入门
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#git" class="tag-item" style="--tag-index: 7">
+        <i class="fas fa-tag"></i>
+        Git
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#版本控制" class="tag-item" style="--tag-index: 8">
+        <i class="fas fa-tag"></i>
+        版本控制
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#工作流" class="tag-item" style="--tag-index: 9">
+        <i class="fas fa-tag"></i>
+        工作流
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#grid" class="tag-item" style="--tag-index: 10">
+        <i class="fas fa-tag"></i>
+        Grid
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#布局" class="tag-item" style="--tag-index: 11">
+        <i class="fas fa-tag"></i>
+        布局
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#vue3" class="tag-item" style="--tag-index: 12">
+        <i class="fas fa-tag"></i>
+        Vue3
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#composition" class="tag-item" style="--tag-index: 13">
+        <i class="fas fa-tag"></i>
+        Composition
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#api" class="tag-item" style="--tag-index: 14">
+        <i class="fas fa-tag"></i>
+        API
+        <span class="tag-count">1</span>
+      </a>
+    
+      <a href="/tags/#javascript" class="tag-item" style="--tag-index: 15">
+        <i class="fas fa-tag"></i>
+        JavaScript
+        <span class="tag-count">1</span>
+      </a>
+    
+  </div>
+</div>
+    <div class="sidebar-card recent-card">
+  <div class="card-header">
+    <i class="fas fa-clock"></i>
+    <h3 class="card-title">最新文章</h3>
+  </div>
+  <ul class="recent-list">
+    
+      <li class="recent-item">
+        <a href="/2026/05/29/welcome-to-jekyll/" class="recent-link">
+          <span class="recent-icon"><i class="fas fa-file-alt"></i></span>
+          <div class="recent-content">
+            <span class="recent-title">欢迎来到我的博客！</span>
+            <span class="recent-date">
+              <i class="fas fa-calendar-alt"></i>
+              2026-05-29
+            </span>
+          </div>
+        </a>
+      </li>
+    
+      <li class="recent-item">
+        <a href="/2026/05/28/vue3-intro/" class="recent-link">
+          <span class="recent-icon"><i class="fas fa-file-alt"></i></span>
+          <div class="recent-content">
+            <span class="recent-title">Vue 3 入门教程：组合式 API 详解</span>
+            <span class="recent-date">
+              <i class="fas fa-calendar-alt"></i>
+              2026-05-28
+            </span>
+          </div>
+        </a>
+      </li>
+    
+      <li class="recent-item">
+        <a href="/2026/05/27/css-grid/" class="recent-link">
+          <span class="recent-icon"><i class="fas fa-file-alt"></i></span>
+          <div class="recent-content">
+            <span class="recent-title">CSS Grid 布局完全指南</span>
+            <span class="recent-date">
+              <i class="fas fa-calendar-alt"></i>
+              2026-05-27
+            </span>
+          </div>
+        </a>
+      </li>
+    
+      <li class="recent-item">
+        <a href="/2026/05/26/git-workflow/" class="recent-link">
+          <span class="recent-icon"><i class="fas fa-file-alt"></i></span>
+          <div class="recent-content">
+            <span class="recent-title">Git 工作流最佳实践</span>
+            <span class="recent-date">
+              <i class="fas fa-calendar-alt"></i>
+              2026-05-26
+            </span>
+          </div>
+        </a>
+      </li>
+    
+      <li class="recent-item">
+        <a href="/2026/05/24/html-css-learning/" class="recent-link">
+          <span class="recent-icon"><i class="fas fa-file-alt"></i></span>
+          <div class="recent-content">
+            <span class="recent-title">HTML/CSS 基础学习心得：我的前端入门之路</span>
+            <span class="recent-date">
+              <i class="fas fa-calendar-alt"></i>
+              2026-05-24
+            </span>
+          </div>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+  </aside>
+</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-glow"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon"><i class="fas fa-feather-alt"></i></span>
+          <span class="logo-text">🪴 ZhongShurong的技术小站</span>
+        </div>
+        <p class="footer-desc">分享学习日常与小笔记，记录点滴成长</p>
+        <div class="footer-social-links">
+          
+            <a href="https://github.com/Supowe" target="_blank" class="social-link" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-compass"></i> 探索本站
+          </h4>
+          <ul class="footer-nav">
+            <li><a href="/"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="/about/"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="/categories/"><i class="fas fa-folder"></i> 文章分类</a></li>
+            <li><a href="/tags/"><i class="fas fa-tags"></i> 标签云</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-layer-group"></i> 内容分类
+          </h4>
+          <ul class="footer-nav">
+            
+              <li>
+                <a href="/categories/#工具">
+                  <i class="fas fa-folder-open"></i> 工具
+                  <span class="count">(2)</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/#jekyll">
+                  <i class="fas fa-folder-open"></i> Jekyll
+                  <span class="count">(1)</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/#前端">
+                  <i class="fas fa-folder-open"></i> 前端
+                  <span class="count">(3)</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/#html">
+                  <i class="fas fa-folder-open"></i> HTML
+                  <span class="count">(1)</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-clock"></i> 最近更新
+          </h4>
+          <ul class="footer-nav footer-recent">
+            
+              <li>
+                <a href="/2026/05/29/welcome-to-jekyll/">
+                  <span class="recent-title">欢迎来到我的博客！</span>
+                  <span class="recent-date">05/29</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/2026/05/28/vue3-intro/">
+                  <span class="recent-title">Vue 3 入门教程：组合式 ...</span>
+                  <span class="recent-date">05/28</span>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/2026/05/27/css-grid/">
+                  <span class="recent-title">CSS Grid 布局完全指南</span>
+                  <span class="recent-date">05/27</span>
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-stats">
+      <div class="stat-box">
+        <i class="fas fa-file-alt"></i>
+        <span class="stat-num">6</span>
+        <span class="stat-label">篇文章</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-folder"></i>
+        <span class="stat-num">9</span>
+        <span class="stat-label">个分类</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-tag"></i>
+        <span class="stat-num">15</span>
+        <span class="stat-label">个标签</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-badge">
+        <span><i class="fas fa-code"></i> Built with Jekyll</span>
+        <span><i class="fas fa-heart heart"></i> 用心打造</span>
+      </div>
+      <p class="copyright">
+        © 2026 <a href="/">🪴 ZhongShurong的技术小站</a>. All rights reserved.
+      </p>
+      <p class="footer-quote">「 记录成长，分享美好 」</p>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
