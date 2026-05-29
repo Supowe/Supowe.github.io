@@ -11,17 +11,8 @@ permalink: /tags/
     </h1>
     
     <div class="tags-cloud">
-      {% assign maxPosts = 0 %}
       {% for tag in site.tags %}
-        {% if tag[1].size > maxPosts %}
-          {% assign maxPosts = tag[1].size %}
-        {% endif %}
-      {% endfor %}
-      
-      {% for tag in site.tags %}
-        {% assign ratio = tag[1].size | times: 100 | divided_by: maxPosts %}
-        {% assign fontSize = 0.8 | plus: ratio | divided_by: 50 %}
-        <a href="#{{ tag[0] | slugify }}" class="tag-item" style="font-size: {{ fontSize }}rem;">
+        <a href="#{{ tag[0] | slugify }}" class="tag-item">
           {{ tag[0] }}
           <span class="tag-count">{{ tag[1].size }}</span>
         </a>
