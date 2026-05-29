@@ -127,14 +127,6 @@ permalink: /about/
                 <i class="fab fa-github"></i>
                 <span>GitHub: @Supowe</span>
               </a>
-              <a href="mailto:meihua@example.com" class="contact-link">
-                <i class="fas fa-envelope"></i>
-                <span>Email: meihua@example.com</span>
-              </a>
-              <a href="https://twitter.com/meihuablog" target="_blank" class="contact-link">
-                <i class="fab fa-twitter"></i>
-                <span>Twitter: @meihuablog</span>
-              </a>
             </div>
             <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
               如果你有任何问题或建议，欢迎随时与我交流！
