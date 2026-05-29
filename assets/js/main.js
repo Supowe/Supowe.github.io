@@ -450,9 +450,24 @@
     });
   }
 
+  function hideEntryOverlay() {
+    if (!entryOverlay) return;
+    
+    setTimeout(function() {
+      entryOverlay.style.opacity = '0';
+      entryOverlay.style.pointerEvents = 'none';
+      entryOverlay.style.transition = 'opacity 0.3s ease';
+      
+      setTimeout(function() {
+        entryOverlay.style.display = 'none';
+      }, 300);
+    }, 600);
+  }
+
   function init() {
     window.scrollTo(0, 0);
     
+    hideEntryOverlay();
     initCursor();
     initBackToTop();
     initReadingProgress();
@@ -471,6 +486,7 @@
 
     setTimeout(function() {
       initScrollReveal();
+      triggerAnimations();
     }, 1500);
   }
 
