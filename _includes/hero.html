@@ -1,0 +1,59 @@
+<section class="hero-section">
+  <div class="floating-shapes">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-avatar-wrapper">
+        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=ZhongShurong" alt="Avatar" class="hero-avatar">
+        <span class="status-badge">在线 ✨</span>
+      </div>
+      <h1 class="hero-title">{{ site.title }}</h1>
+      <p class="hero-subtitle">{{ site.description }}</p>
+      <p class="hero-bio">
+        热爱技术，专注于前端开发和用户体验设计。在这里分享技术心得、学习笔记和生活感悟。
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">{{ site.posts | size }}</div>
+          <div class="stat-label">篇文章</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{{ site.categories | size }}</div>
+          <div class="stat-label">个分类</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{{ site.tags | size }}</div>
+          <div class="stat-label">个标签</div>
+        </div>
+      </div>
+      <div class="hero-social">
+        {% if site.github_username %}
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+        {% endif %}
+        {% if site.twitter_username %}
+          <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        {% endif %}
+        {% if site.email %}
+          <a href="mailto:{{ site.email }}" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        {% endif %}
+        <a href="{{ "/feed.xml" | relative_url }}" title="RSS">
+          <i class="fas fa-rss"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

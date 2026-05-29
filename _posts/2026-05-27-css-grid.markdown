@@ -1,0 +1,101 @@
+---
+layout: post
+title: "CSS Grid 布局完全指南"
+date:   2026-05-27 09:00:00 +0000
+categories: 前端 CSS
+tags: CSS Grid 布局
+---
+
+## CSS Grid 简介
+
+CSS Grid 是一种强大的二维布局系统，可以同时处理行和列。它提供了一种更简洁、更强大的方式来创建复杂的布局。
+
+### 基本概念
+
+**网格容器（Grid Container）**：应用 `display: grid` 的元素
+**网格项（Grid Item）**：容器的直接子元素
+**网格线（Grid Line）**：划分网格的线
+**网格轨道（Grid Track）**：两条相邻网格线之间的空间
+
+### 创建网格
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 100px 100px;
+  gap: 20px;
+}
+```
+
+### 网格模板
+
+使用 `fr` 单位创建弹性网格：
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+```
+
+### 网格区域
+
+使用 `grid-template-areas` 创建命名区域：
+
+```css
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+```
+
+### 项目放置
+
+精确控制网格项的位置：
+
+```css
+.item {
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+}
+```
+
+### 对齐方式
+
+**justify-items**：水平对齐
+**align-items**：垂直对齐
+**place-items**：同时设置两者
+
+```css
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+```
+
+### 响应式网格
+
+结合媒体查询创建响应式布局：
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+```
+
+### 总结
+
+CSS Grid 是现代前端开发中不可或缺的布局工具，掌握它可以让你更高效地创建复杂的页面布局。

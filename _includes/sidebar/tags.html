@@ -1,0 +1,15 @@
+<div class="sidebar-card tag-card">
+  <div class="card-header">
+    <i class="fas fa-tags"></i>
+    <h3 class="card-title">标签云</h3>
+  </div>
+  <div class="tag-cloud">
+    {% for tag in site.tags %}
+      <a href="/tags/{{ tag[0] | slugify }}" class="tag-item" style="--tag-index: {{ forloop.index }}">
+        <i class="fas fa-tag"></i>
+        {{ tag[0] }}
+        <span class="tag-count">{{ tag[1].size }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>

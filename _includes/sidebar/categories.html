@@ -1,0 +1,17 @@
+<div class="sidebar-card category-card">
+  <div class="card-header">
+    <i class="fas fa-folder-open"></i>
+    <h3 class="card-title">文章分类</h3>
+  </div>
+  <ul class="category-list">
+    {% for category in site.categories %}
+      <li class="category-item">
+        <a href="/categories/{{ category[0] | slugify }}" class="category-link">
+          <span class="category-icon"><i class="fas fa-folder"></i></span>
+          <span class="category-name">{{ category[0] }}</span>
+          <span class="category-count">{{ category[1].size }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

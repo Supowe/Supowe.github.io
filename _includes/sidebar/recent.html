@@ -1,0 +1,22 @@
+<div class="sidebar-card recent-card">
+  <div class="card-header">
+    <i class="fas fa-clock"></i>
+    <h3 class="card-title">最新文章</h3>
+  </div>
+  <ul class="recent-list">
+    {% for post in site.posts limit:5 %}
+      <li class="recent-item">
+        <a href="{{ post.url | relative_url }}" class="recent-link">
+          <span class="recent-icon"><i class="fas fa-file-alt"></i></span>
+          <div class="recent-content">
+            <span class="recent-title">{{ post.title }}</span>
+            <span class="recent-date">
+              <i class="fas fa-calendar-alt"></i>
+              {{ post.date | date: "%Y-%m-%d" }}
+            </span>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

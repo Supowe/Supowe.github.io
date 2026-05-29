@@ -1,0 +1,25 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <h1 class="site-title">
+        <a href="{{ "/" | relative_url }}">
+          <span class="logo-icon"><i class="fas fa-feather-alt"></i></span>
+          {{ site.title }}
+        </a>
+      </h1>
+      <nav class="nav-links">
+        <a href="{{ "/" | relative_url }}">
+          <i class="fas fa-home"></i> <span>首页</span>
+        </a>
+        <a href="{{ "/about/" | relative_url }}">
+          <i class="fas fa-user"></i> <span>关于</span>
+        </a>
+        {% if site.github_username %}
+          <a href="https://github.com/{{ site.github_username }}" target="_blank">
+            <i class="fab fa-github"></i> <span>GitHub</span>
+          </a>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+</header>

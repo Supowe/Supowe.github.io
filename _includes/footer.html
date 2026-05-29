@@ -1,0 +1,107 @@
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon"><i class="fas fa-feather-alt"></i></span>
+          <span class="logo-text">{{ site.title }}</span>
+        </div>
+        <p class="footer-desc">{{ site.description }}</p>
+        <div class="footer-social-links">
+          {% if site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" class="social-link" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          {% endif %}
+          {% if site.twitter_username %}
+            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" class="social-link" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          {% endif %}
+          <a href="mailto:{{ site.email }}" class="social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="{{ "/feed.xml" | relative_url }}" class="social-link" title="RSS订阅">
+            <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-compass"></i> 探索本站
+          </h4>
+          <ul class="footer-nav">
+            <li><a href="{{ "/" | relative_url }}"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="{{ "/about/" | relative_url }}"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="{{ "/categories/" | relative_url }}"><i class="fas fa-folder"></i> 文章分类</a></li>
+            <li><a href="{{ "/tags/" | relative_url }}"><i class="fas fa-tags"></i> 标签云</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-layer-group"></i> 内容分类
+          </h4>
+          <ul class="footer-nav">
+            {% for category in site.categories limit:4 %}
+              <li>
+                <a href="/categories/{{ category[0] }}">
+                  <i class="fas fa-folder-open"></i> {{ category[0] }}
+                  <span class="count">({{ category[1].size }})</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="footer-link-group">
+          <h4 class="footer-heading">
+            <i class="fas fa-clock"></i> 最近更新
+          </h4>
+          <ul class="footer-nav footer-recent">
+            {% for post in site.posts limit:3 %}
+              <li>
+                <a href="{{ post.url | relative_url }}">
+                  <span class="recent-title">{{ post.title | truncate: 18 }}</span>
+                  <span class="recent-date">{{ post.date | date: "%m/%d" }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-stats">
+      <div class="stat-box">
+        <i class="fas fa-file-alt"></i>
+        <span class="stat-num">{{ site.posts | size }}</span>
+        <span class="stat-label">篇文章</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-folder"></i>
+        <span class="stat-num">{{ site.categories | size }}</span>
+        <span class="stat-label">个分类</span>
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-tag"></i>
+        <span class="stat-num">{{ site.tags | size }}</span>
+        <span class="stat-label">个标签</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-badge">
+        <span><i class="fas fa-code"></i> Built with Jekyll</span>
+        <span><i class="fas fa-heart heart"></i> 用心打造</span>
+      </div>
+      <p class="copyright">
+        © {{ site.time | date: "%Y" }} <a href="{{ "/" | relative_url }}">{{ site.title }}</a>. All rights reserved.
+      </p>
+      <p class="footer-quote">「 记录成长，分享美好 」</p>
+    </div>
+  </div>
+</footer>
